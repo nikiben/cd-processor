@@ -1,0 +1,72 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+            aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+            <a class="navbar-brand" href="#">CIA Document Processor</a>
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+    
+    <div id="content">
+        <div class="card">
+    
+            <div class="card-header">
+                Meltwater Technical Evaluation
+            </div>
+    
+            <div class="card-body">
+                <div class="text-center">
+                    <h5 class="card-title">CIA Classified Document Text Processor </h5>
+                    <p class="card-text">Remove given keywords and phrases from document text and insert XXXX at the
+                        locations where text was removed.</p>
+                </div>
+    
+                <form [formGroup]="processForm">
+                    <div class="form-group has-error" [ngClass]="{'has-error': getName('keywords').errors?.required && getName('keywords').touched}">
+                        <label for="keyword" class="font-weight-bold">Keywords</label>
+                        <input type="text" class="form-control" id="keyword" placeholder="Enter keywords here..." formControlName="keywords">
+                        <small id="emailHelp" class="form-text text-muted font-italic">String of keywords and phrases: a string of
+                            censored keywords and phrases separated by spaces or commas. Phrases will be enclosed in single
+                            or double quotes. Some examples:</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="doctext" class="font-weight-bold">Document Text</label>
+                        <textarea rows="10" class="form-control" id="doctext" placeholder="Enter or paste document text..." formControlName="document"></textarea>
+                        <small id="emailHelp" class="form-text text-muted font-italic">Document text – the original document text that
+                            needs the provided keywords and phrases removed (masked out).</small>
+                    </div>
+                </form>
+    
+                <div class="text-right">
+                    <button type="button" class="btn btn-danger" (click)="classify()"> Process Text </button>&nbsp;
+                    <button type="button" class="btn btn-primary" (click)="clearForm()"> Clear All </button>
+                </div>
+
+
+                <div class="margin-bottom"> 
+                        <h5 class="font-bold">Redacted Text Document </h5>
+                        {{ redactedText }} 
+                    </div>
+                    <br>
+
+            </div>
+    
+            <div class="card-footer text-muted">
+                Ebenezer Isaac
+            </div>
+        </div>
+    
+    </div>
